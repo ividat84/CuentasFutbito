@@ -414,14 +414,23 @@ class App{
       return false;
     }).sort((a,b)=>a.name.localeCompare(b.name));
   }
+  // Saldo que se MUESTRA de un jugador en la vista de una modalidad: si juega F5 y F7
+  // se enseña su saldo total (ambas modalidades); si solo juega una, el de esa modalidad.
+  getDisplayBalance(player, matchType){
+    return player.type === 'F5/F7'
+      ? this.getPlayerTotalBalance(player.id)
+      : this.getPlayerBalance(player.id, matchType);
+  }
+  // b = saldo mostrado (total para F5/F7), bMatch = saldo solo de esta modalidad (para el marcador)
   classify(matchType){
     const players = this.getPlayersForMatch(matchType);
     const credit=[], neutral=[], debt=[];
     players.forEach(p=>{
-      const b = this.getPlayerBalance(p.id, matchType);
-      if(b > 0.001) credit.push({p,b});
-      else if(b < -0.001) debt.push({p,b});
-      else neutral.push({p,b});
+      const b = this.getDisplayBalance(p, matchType);
+      const bMatch = this.getPlayerBalance(p.id, matchType);
+      if(b > 0.001) credit.push({p,b,bMatch});
+      else if(b < -0.001) debt.push({p,b,bMatch});
+      else neutral.push({p,b,bMatch});
     });
     credit.sort((a,b)=>a.p.name.localeCompare(b.p.name));
     neutral.sort((a,b)=>a.p.name.localeCompare(b.p.name));
@@ -589,7 +598,8 @@ class App{
     await this.ensureFonts();
     const bote = this.getTotalPot(matchType);
     const {credit, neutral, debt} = this.classify(matchType);
-    const jugadoresSum = [...credit, ...debt].reduce((s,x)=>s+x.b, 0);
+    // El marcador suma solo lo de esta modalidad (así no se cuenta dos veces lo de los F5/F7)
+    const jugadoresSum = [...credit, ...neutral, ...debt].reduce((s,x)=>s+x.bMatch, 0);
     const balance = bote + jugadoresSum;
 
     // Lienzo con proporción de pantalla de móvil: todo cabe en una sola imagen, sin scroll.
@@ -925,8 +935,9 @@ class App{
 
   renderScoreboard(matchType){
     const bote = this.getTotalPot(matchType);
-    const {credit, debt} = this.classify(matchType);
-    const jugadores = [...credit, ...debt].reduce((s,x)=>s+x.b,0);
+    const {credit, neutral, debt} = this.classify(matchType);
+    // Solo lo de esta modalidad (los jugadores F5/F7 se listan con su total, pero aquí no se duplica)
+    const jugadores = [...credit, ...neutral, ...debt].reduce((s,x)=>s+x.bMatch,0);
     const balance = bote + jugadores;
     const cls = v => v>0.001?'pos':(v<-0.001?'neg':'neu');
     return `
@@ -952,11 +963,17 @@ class App{
   renderResumen(){
     const mt = this.matchFilter;
     const {credit, neutral, debt} = this.classify(mt);
-    const row = (item, kind) => `
+    const row = (item, kind) => {
+      const dual = item.p.type === 'F5/F7';
+      const detail = dual
+        ? ` · total F5+F7 (F5 ${fmt(this.getPlayerBalance(item.p.id,'F5'))} · F7 ${fmt(this.getPlayerBalance(item.p.id,'F7'))})`
+        : '';
+      return `
       <div class="ticket ${kind}" onclick="app.openModal('quickTx', {playerId:'${item.p.id}', matchType:'${mt}'})">
-        <div><div class="name">${escapeHtml(item.p.name)}</div><div class="sub">${item.p.type}${item.p.isRegular?' · habitual':''}</div></div>
+        <div><div class="name">${escapeHtml(item.p.name)}</div><div class="sub">${item.p.type}${item.p.isRegular?' · habitual':''}${detail}</div></div>
         <div class="amt mono ${item.b>0?'pos':(item.b<0?'neg':'zero')}">${fmt(item.b)}</div>
       </div>`;
+    };
     return `
       ${this.renderScoreboard(mt)}
       <button class="btn btn-sm btn-outline" onclick="app.exportSummaryImage('${mt}')">${ICONS.download} Exportar imagen (${mt})</button>
