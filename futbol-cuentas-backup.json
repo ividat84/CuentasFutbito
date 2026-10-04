@@ -6352,9 +6352,16 @@
       "matchType": "F7",
       "reason": "Balon",
       "createdAt": "2026-09-14T21:37:52.233Z"
+    },
+    {
+      "id": "1791147009581882",
+      "amount": 1,
+      "matchType": "F7",
+      "reason": "",
+      "createdAt": "2026-10-04T20:50:09.581Z"
     }
   ],
   "footballs": [],
-  "exportDate": "2026-10-04T20:49:02.414Z",
+  "exportDate": "2026-10-04T20:50:10.286Z",
   "version": "2.0"
 }
