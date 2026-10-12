@@ -5897,6 +5897,17 @@
       "matchType": "F7",
       "reason": "5 octubre",
       "createdAt": "2026-10-12T19:39:15.070Z"
+    },
+    {
+      "id": "1791834008313735",
+      "playerIds": [
+        "1791833978190644",
+        "1791833992341469"
+      ],
+      "amount": -3.5,
+      "matchType": "F7",
+      "reason": "5 octubre",
+      "createdAt": "2026-10-12T19:40:08.313Z"
     }
   ],
   "generalTransactions": [
@@ -6413,6 +6424,6 @@
     }
   ],
   "footballs": [],
-  "exportDate": "2026-10-12T19:39:53.045Z",
+  "exportDate": "2026-10-12T19:40:09.018Z",
   "version": "2.0"
 }
