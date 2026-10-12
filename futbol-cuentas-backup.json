@@ -738,6 +738,15 @@
       "createdAt": "2026-09-13T22:33:18.953Z",
       "skill": "medio",
       "position": "defensa"
+    },
+    {
+      "id": "1791833978190644",
+      "name": "Fernando",
+      "type": "F7",
+      "isRegular": true,
+      "skill": "muy_alto",
+      "position": "delantero",
+      "createdAt": "2026-10-12T19:39:38.190Z"
     }
   ],
   "transactions": [
@@ -6395,6 +6404,6 @@
     }
   ],
   "footballs": [],
-  "exportDate": "2026-10-12T19:39:15.797Z",
+  "exportDate": "2026-10-12T19:39:38.895Z",
   "version": "2.0"
 }
