@@ -747,6 +747,15 @@
       "skill": "muy_alto",
       "position": "delantero",
       "createdAt": "2026-10-12T19:39:38.190Z"
+    },
+    {
+      "id": "1791833992341469",
+      "name": "Miguel Mic",
+      "type": "F7",
+      "isRegular": true,
+      "skill": "alto",
+      "position": "medio",
+      "createdAt": "2026-10-12T19:39:52.341Z"
     }
   ],
   "transactions": [
@@ -6404,6 +6413,6 @@
     }
   ],
   "footballs": [],
-  "exportDate": "2026-10-12T19:39:38.895Z",
+  "exportDate": "2026-10-12T19:39:53.045Z",
   "version": "2.0"
 }
