@@ -6050,6 +6050,36 @@
       "matchType": "F7",
       "reason": "",
       "createdAt": "2026-10-13T18:06:19.872Z"
+    },
+    {
+      "id": "1791914801158608",
+      "playerIds": [
+        "1753138827941"
+      ],
+      "amount": 20,
+      "matchType": "F7",
+      "reason": "",
+      "createdAt": "2026-10-13T18:06:41.158Z"
+    },
+    {
+      "id": "179191482427522",
+      "playerIds": [
+        "1753138357455"
+      ],
+      "amount": 3.5,
+      "matchType": "F7",
+      "reason": "",
+      "createdAt": "2026-10-13T18:07:04.275Z"
+    },
+    {
+      "id": "1791915011416847",
+      "playerIds": [
+        "1753138658080"
+      ],
+      "amount": 19,
+      "matchType": "F7",
+      "reason": "",
+      "createdAt": "2026-10-13T18:10:11.417Z"
     }
   ],
   "generalTransactions": [
@@ -6566,6 +6596,6 @@
     }
   ],
   "footballs": [],
-  "exportDate": "2026-10-13T18:06:20.579Z",
+  "exportDate": "2026-10-13T18:10:12.127Z",
   "version": "2.0"
 }
