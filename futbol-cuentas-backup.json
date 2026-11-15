@@ -6535,6 +6535,16 @@
       "matchType": "F7",
       "reason": "",
       "createdAt": "2026-11-15T21:44:42.759Z"
+    },
+    {
+      "id": "1794779165730558",
+      "playerIds": [
+        "1753608606416"
+      ],
+      "amount": -4,
+      "matchType": "F7",
+      "reason": "",
+      "createdAt": "2026-11-15T21:46:05.730Z"
     }
   ],
   "generalTransactions": [
@@ -7065,6 +7075,6 @@
     }
   ],
   "footballs": [],
-  "exportDate": "2026-11-15T21:44:43.462Z",
+  "exportDate": "2026-11-15T21:46:06.435Z",
   "version": "2.0"
 }
